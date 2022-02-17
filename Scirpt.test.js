@@ -1,5 +1,4 @@
-import { sortMatrixVert, sortMatrixHor } from './Scirpt';
-
+const { sortMatrixVert, sortMatrixHor } =  require('./Script');
 describe('Sorting matrices vertically ', () => {
   it('Sort completed', () => {
     const matrix = [
