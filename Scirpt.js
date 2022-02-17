@@ -24,6 +24,6 @@ const sortMatrixHor = (matrix) => {
   return matrix.map((x) => flatMatrix.splice(0, x.length));;
 };
 
-module.exports.sortMatrixVert = sortMatrixVert;
+module.exports.Script = sortMatrixVert;
 module.exports.sortMatrixHor = sortMatrixHor;
 
