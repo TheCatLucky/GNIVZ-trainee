@@ -1,4 +1,4 @@
-const sortMatrixVert = (matrix) => {
+ const sortMatrixVert = (matrix) => {
   const length = matrix[0].length;
   if (!matrix.every(arr => arr.length === length)) {
     throw new Error('Not Valid Matrix');
@@ -24,6 +24,6 @@ const sortMatrixHor = (matrix) => {
   return matrix.map((x) => flatMatrix.splice(0, x.length));;
 };
 
-module.exports.Script = sortMatrixVert;
+module.exports.sortMatrixVert = sortMatrixVert;
 module.exports.sortMatrixHor = sortMatrixHor;
 
