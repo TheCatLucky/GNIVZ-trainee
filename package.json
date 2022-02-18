@@ -1,8 +1,18 @@
 {
+  "name": "evgeniy-savitskiy-web",
+  "version": "1.0.0",
+  "description": "Подробную информацию по созданию приложений ищите в [документации ГНИВЦ](https://dev.gnivc.ru/gnivc/ff-web).",
+  "main": "index.js",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "devDependencies": {
-    "jest": "^27.5.1"
+  "repository": {
+    "type": "git",
+    "url": "https://dev.gnivc.ru/gnivc-edu/evgeniy-savitskiy-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^17.0.18"
   }
 }
