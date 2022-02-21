@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
 
-import Posts from '../Posts';
 import { PostProps, posts as data } from '../../data/posts';
+import Posts from '../Posts';
 
 const App: React.FC = () => {
-  const [value, setValue] = useState(0);
   const [posts, setPosts] = useState<PostProps[]>(data.slice(0, 3));
-  console.log(data.length);
-  const handleClick = () => {
-    setValue(value + 1);
-  };
+  const [isVisible, setVisible] = useState(true);
   const handleMorePosts = () => {
     setPosts(data.slice(0, posts.length + 3));
   };
+  const toggleVisibility = () => {
+    setVisible(!isVisible);
+  };
   return (
     <>
-      <button type="button" onClick={handleClick}>
-        {value}
+      <button type="button" onClick={toggleVisibility}>
+        {isVisible ? 'Скрыть посты' : 'Показать посты'}
       </button>
-      <Posts data={posts} />
-      {posts.length !== data.length && (
-        <button type="button" onClick={handleMorePosts}>
-          Показать еще
-        </button>
-      )}
+      {isVisible && <Posts posts={posts} handleMorePosts={handleMorePosts} data={data} />}
     </>
   );
 };
