@@ -17,7 +17,7 @@ describe('Компонент App', () => {
       },
     ];
     mockedAxios.get.mockImplementationOnce(() =>
-      Promise.resolve({ data: posts })
+      Promise.resolve({ data: posts }),
     );
     render(<App />);
     // eslint-disable-next-line

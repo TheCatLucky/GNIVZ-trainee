@@ -3,31 +3,44 @@ import React, { useEffect, useState } from 'react';
 import Post, { PostProps } from './Post';
 
 type PostsProps = {
+  posts: PostProps[];
   data: PostProps[];
+  isSearching: boolean;
+  handleMorePosts: () => void;
   search?: string;
 };
 
-const Posts: React.FC<PostsProps> = ({ data, search = '' }) => {
+const Posts: React.FC<PostsProps> = ({
+  posts,
+  data,
+  isSearching,
+  search = '',
+  handleMorePosts,
+}) => {
   const [filtred, setFiltred] = useState<PostProps[]>([]);
   useEffect(() => {
-    if (search) {
-      const filtredPosts = data.filter((post) =>
-        post.title.toLowerCase().includes(search.toLowerCase())
+    if (search.length > 2) {
+      const filtredPosts = posts.filter((post) =>
+        post.title.toLowerCase().includes(search.toLowerCase()),
       );
-      console.log(data);
       setFiltred(filtredPosts);
     } else {
-      setFiltred(data);
+      setFiltred(posts);
     }
-  }, [search, data]);
+  }, [search, posts]);
   useEffect(() => {
-    setFiltred(data);
-  }, [data]);
+    setFiltred(posts);
+  }, [posts]);
   return (
     <div>
       {filtred.map((post) => (
         <Post key={post.id} {...post} />
       ))}
+      {posts.length < data.length && !isSearching && (
+        <button type="button" onClick={handleMorePosts}>
+          Показать еще
+        </button>
+      )}
     </div>
   );
 };
