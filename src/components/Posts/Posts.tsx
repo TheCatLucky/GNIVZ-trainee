@@ -21,16 +21,14 @@ const Posts: React.FC<PostsProps> = ({
   useEffect(() => {
     if (search.length > 2) {
       const filtredPosts = posts.filter((post) =>
-        post.title.toLowerCase().includes(search.toLowerCase()),
+        post.title.toLowerCase().includes(search.toLowerCase())
       );
       setFiltred(filtredPosts);
     } else {
       setFiltred(posts);
     }
   }, [search, posts]);
-  useEffect(() => {
-    setFiltred(posts);
-  }, [posts]);
+
   return (
     <div>
       {filtred.map((post) => (
