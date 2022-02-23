@@ -18,7 +18,7 @@ const App: React.FC = () => {
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearch(e.target.value);
   };
-  const handleMorePosts = () => {
+  const handleMorePosts = (): void => {
     setPosts(data.slice(0, posts.length + 3));
   };
   useEffect(() => {

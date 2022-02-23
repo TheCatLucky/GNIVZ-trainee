@@ -28,9 +28,7 @@ const Posts: React.FC<PostsProps> = ({
       setFiltred(posts);
     }
   }, [search, posts]);
-  useEffect(() => {
-    setFiltred(posts);
-  }, [posts]);
+
   return (
     <div>
       {filtred.map((post) => (
