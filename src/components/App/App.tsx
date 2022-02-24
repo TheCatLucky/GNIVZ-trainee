@@ -6,7 +6,7 @@ import { PostProps } from '../../data/posts';
 import Search from '../Search';
 import Loading from '../ui/Loading';
 import CustomError from '../Error';
-import styles from './App.module.scss';
+import classes from './App.module.scss';
 import Button from '../Button';
 
 const App: React.FC = () => {
@@ -47,22 +47,26 @@ const App: React.FC = () => {
     }
   }, [search]);
   return (
-    <div className={styles.component}>
-      <Search search={search} handleSearch={handleSearch} />
+    <div className={classes.component}>
+      <div className={classes.search}>
+        <Search search={search} handleSearch={handleSearch} />
+      </div>
       {isLoading && <Loading />}
       {error && <CustomError error={error} />}
-      <div>
+      <div className={classes.btnGroup}>
         <Button onClick={() => setView('list')}>Список</Button>
         <Button onClick={() => setView('cards')}>Карточки</Button>
       </div>
-      <Posts
-        posts={posts}
-        search={search}
-        view={view}
-        data={data}
-        handleMorePosts={handleMorePosts}
-        isSearching={isSearching}
-      />
+      <div className={classes.content}>
+        <Posts
+          posts={posts}
+          search={search}
+          view={view}
+          data={data}
+          handleMorePosts={handleMorePosts}
+          isSearching={isSearching}
+        />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,17 @@
+$mainColor: #eee;
+
 .button {
+  background-color: $mainColor;
+  padding: 5px;
+  margin: 0;
+  width: 100%;
+  color: #222;
   &:hover {
+    background-color: darken($mainColor, 20%);
     cursor: pointer;
+  }
+  @media (min-width: 768px) {
+    padding: 1rem 1.2rem;
+    width: auto;
   }
 }
