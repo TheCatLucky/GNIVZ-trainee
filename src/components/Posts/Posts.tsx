@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-import Post, { PostProps } from './Post';
+import Post, { PostProps } from './PostLayout/Post';
+import Card from './CardLayout/Card';
 
+export type View = 'list' | 'cards';
 type PostsProps = {
   posts: PostProps[];
   data: PostProps[];
   isSearching: boolean;
   handleMorePosts: () => void;
   search?: string;
+  view?: View;
 };
 
 const Posts: React.FC<PostsProps> = ({
@@ -15,9 +18,11 @@ const Posts: React.FC<PostsProps> = ({
   data,
   isSearching,
   search = '',
+  view = 'list',
   handleMorePosts,
 }) => {
-  const [filtred, setFiltred] = useState<PostProps[]>([]);
+  const [filtered, setFiltred] = useState<PostProps[]>([]);
+
   useEffect(() => {
     if (search.length > 2) {
       const filtredPosts = posts.filter((post) =>
@@ -29,18 +34,35 @@ const Posts: React.FC<PostsProps> = ({
     }
   }, [search, posts]);
 
-  return (
-    <div>
-      {filtred.map((post) => (
-        <Post key={post.id} {...post} />
-      ))}
-      {posts.length < data.length && !isSearching && (
-        <button type="button" onClick={handleMorePosts}>
-          Показать еще
-        </button>
-      )}
-    </div>
-  );
+  if (view === 'list') {
+    return (
+      <div>
+        {filtered.map((post) => (
+          <Post key={post.id} {...post} />
+        ))}
+        {posts.length < data.length && !isSearching && (
+          <button type="button" onClick={handleMorePosts}>
+            Показать еще
+          </button>
+        )}
+      </div>
+    );
+  }
+  if (view === 'cards') {
+    return (
+      <div>
+        {filtered.map((post) => (
+          <Card key={post.id} {...post} />
+        ))}
+        {posts.length < data.length && !isSearching && (
+          <button type="button" onClick={handleMorePosts}>
+            Показать еще
+          </button>
+        )}
+      </div>
+    );
+  }
+  return null;
 };
 
 export default Posts;

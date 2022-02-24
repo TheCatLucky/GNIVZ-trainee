@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 
-import Posts from '../Posts';
+import Posts, { View } from '../Posts';
 import { PostProps } from '../../data/posts';
 import Search from '../Search';
 import Loading from '../ui/Loading';
 import CustomError from '../Error';
 import styles from './App.module.scss';
+import Button from '../Button';
 
 const App: React.FC = () => {
   const [data, setData] = useState<PostProps[]>([]);
   const [posts, setPosts] = useState<PostProps[]>([]);
+  const [view, setView] = useState<View>('list');
   const [isSearching, setSearching] = useState(false);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -49,10 +51,15 @@ const App: React.FC = () => {
       <Search search={search} handleSearch={handleSearch} />
       {isLoading && <Loading />}
       {error && <CustomError error={error} />}
+      <div>
+        <Button onClick={() => setView('list')}>Список</Button>
+        <Button onClick={() => setView('cards')}>Карточки</Button>
+      </div>
       <Posts
         posts={posts}
-        data={data}
         search={search}
+        view={view}
+        data={data}
         handleMorePosts={handleMorePosts}
         isSearching={isSearching}
       />

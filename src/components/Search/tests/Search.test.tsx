@@ -12,3 +12,10 @@ describe('Компонент Search', () => {
     expect(onChange).toHaveBeenCalledTimes(5);
   });
 });
+
+describe('Search snapshot', () => {
+  it('didnt change', () => {
+    const app = render(<Search search="" handleSearch={() => {}} />);
+    expect(app).toMatchSnapshot();
+  });
+});

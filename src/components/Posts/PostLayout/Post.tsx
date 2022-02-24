@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 export type PostProps = {
   userId: number;
@@ -14,4 +14,4 @@ const Post: React.FC<PostProps> = ({ title, body }) => (
   </>
 );
 
-export default Post;
+export default memo(Post);
