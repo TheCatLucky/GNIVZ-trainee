@@ -3,14 +3,13 @@ import React, { useEffect, useState } from 'react';
 import Post, { PostProps } from './PostLayout/Post';
 import Card from './CardLayout/Card';
 
-export type View = 'list' | 'cards';
 type PostsProps = {
   posts: PostProps[];
   data: PostProps[];
   isSearching: boolean;
   handleMorePosts: () => void;
   search?: string;
-  view?: View;
+  view?: string;
 };
 
 const Posts: React.FC<PostsProps> = ({
