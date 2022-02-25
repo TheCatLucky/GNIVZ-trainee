@@ -10,6 +10,7 @@ export type SearchProps = {
 const Search: React.FC<SearchProps> = ({ handleSearch, search }) => (
   <div className={styles.component}>
     <input
+      data-testid='textbox'
       type="text"
       value={search}
       onChange={handleSearch}

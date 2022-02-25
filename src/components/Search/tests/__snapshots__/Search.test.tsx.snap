@@ -9,6 +9,7 @@ Object {
         class="component"
       >
         <input
+          data-testid="textbox"
           placeholder="search..."
           type="text"
           value=""
@@ -21,6 +22,7 @@ Object {
       class="component"
     >
       <input
+        data-testid="textbox"
         placeholder="search..."
         type="text"
         value=""

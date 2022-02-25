@@ -23,6 +23,7 @@ const Home: React.FC = () => {
   const handleMorePosts = (): void => {
     setPosts(data.slice(0, posts.length + 3));
   };
+
   useEffect(() => {
     setLoading(true);
     axios
@@ -39,6 +40,7 @@ const Home: React.FC = () => {
         setError(err.message);
       });
   }, []);
+
   useEffect(() => {
     if (search) {
       setSearching(true);
