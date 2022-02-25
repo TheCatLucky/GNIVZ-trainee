@@ -1,9 +1,10 @@
 import React from 'react';
-import { act, render, screen } from '@testing-library/react';
+import { act, configure, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
 
 import Home from '../../routes/Home';
+configure({ defaultHidden: true });
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe('Компонент Home', () => {
@@ -22,9 +23,10 @@ describe('Компонент Home', () => {
     render(<Home />);
     // eslint-disable-next-line
     await act(() => Promise.resolve<any>({ data: posts }));
-    await userEvent.type(screen.getByRole('textbox'), 'qui est esse');
+    const userScreen = screen.getByRole('textbox');
+    userEvent.type(userScreen, 'qui est esse');
     expect(screen.queryByText('qui est esse')).toBeInTheDocument();
-    await userEvent.type(screen.getByRole('textbox'), 'Ramda');
+    userEvent.type(userScreen, 'Ramda');
     expect(screen.queryByText('qui est esse')).toBeNull();
   });
 });

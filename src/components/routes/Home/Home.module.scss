@@ -17,14 +17,14 @@
 .search {
   display: flex;
   position: fixed;
-  bottom: 29px;
+  bottom: 0;
   width: 100%;
   @media (min-width: 768px) {
     position: static;
   }
 }
 .content {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   @media (min-width: 768px) {
     margin-bottom: 0px;
   }

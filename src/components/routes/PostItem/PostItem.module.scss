@@ -1,2 +1,14 @@
 .component {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 100%;
+  margin: 10px;
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  a:hover {
+    color: blue;
+  }
 }

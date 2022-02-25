@@ -1,21 +1,21 @@
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { PostProps } from '../../../data/posts';
 import CustomError from '../../Error';
 import Loading from '../../ui/Loading';
-import styles from './PostItem.module.scss';
+import classes from './PostItem.module.scss';
 
 const PostItem: React.FC = () => {
-  const { id } = useParams();
+  const { userId } = useParams();
   const [isLoading, setLoading] = useState(false);
   const [post, setPost] = useState<PostProps>();
   const [error, setError] = useState('');
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .get(`https://jsonplaceholder.typicode.com/posts/${userId}`)
       .then((response) => {
         //throw new Error('Ошибка');
         setPost(response.data);
@@ -27,12 +27,16 @@ const PostItem: React.FC = () => {
         setError(err.message);
       });
   }, []);
+  console.log('s');
   return (
-    <div className={styles.component}>
+    <div className={classes.component}>
       {isLoading && <Loading />}
       {error && <CustomError error={error} />}
-      <h5>{post?.title}</h5>
+      <Link to={'/post/list'}>Назад</Link>
+      <h3>{post?.title}</h3>
       <p>{post?.body}</p>
+      <p>Номер поста: {post?.id}</p>
+      <p>Номер пользователя: {post?.userId}</p>
     </div>
   );
 };

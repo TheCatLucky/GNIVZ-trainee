@@ -3,7 +3,7 @@
   justify-content: flex-end;
   align-items: center;
   height: 72px;
-  margin: 16px;
+  margin: 10px;
   padding: 0 16px;
   border-radius: 4px;
   border: 1px solid #E4E5E7;
@@ -27,7 +27,6 @@
   place-items: center;
 
   &:not(.active):hover {
-    color: #0057FF;
     border: 1px solid #0057FF;
   }
 

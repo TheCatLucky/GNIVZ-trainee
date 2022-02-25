@@ -1,21 +1,20 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
 import PostItem from '../PostItem';
 
 const testId = 'testingPostItem';
 
-type PostItemProps = React.ComponentProps<typeof PostItem>;
-
-const renderComponent = (props: PostItemProps = {}) => render(
-  <PostItem
-    data-testid={testId}
-    {...props}
-  />,
+const renderComponent = (
+  <BrowserRouter>
+    <PostItem data-testid={testId} />
+  </BrowserRouter>
 );
 
 describe('Компонент PostItem', () => {
-  it('отображается без ошибок', () => {
-    expect(renderComponent).not.toThrow();
+  it('должен иметь стиль', () => {
+    render(renderComponent);
+    expect(screen.getByText('Назад')).toHaveStyle({ color: 'rgb(0,0,0);' });
   });
 });

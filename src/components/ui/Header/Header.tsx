@@ -12,8 +12,8 @@ const Header: React.FC = () => (
       <NavLink to="/post/cards" className={classes.link}>
         Карточки
       </NavLink>
-      <NavLink to="/graphic" className={classes.link}>
-        Графическое отображениее
+      <NavLink to="/about" className={classes.link}>
+        О проекте
       </NavLink>
     </nav>
   </header>
