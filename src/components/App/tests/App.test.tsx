@@ -2,6 +2,7 @@ import React from 'react';
 import { act, configure, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import axios from 'axios';
+import { BrowserRouter } from 'react-router-dom';
 
 import Home from '../../routes/Home';
 configure({ defaultHidden: true });
@@ -20,7 +21,11 @@ describe('Компонент Home', () => {
     mockedAxios.get.mockImplementationOnce(() =>
       Promise.resolve({ data: posts }),
     );
-    render(<Home />);
+    render(
+      <BrowserRouter>
+        <Home />
+      </BrowserRouter>,
+    );
     // eslint-disable-next-line
     await act(() => Promise.resolve<any>({ data: posts }));
     const userScreen = screen.getByRole('textbox');

@@ -1,0 +1,11 @@
+.component {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+.button {
+  margin-top: 5px;
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import Post, { PostProps } from './PostLayout/Post';
 import Card from './CardLayout/Card';
-
+import classes from './Posts.module.scss';
 type PostsProps = {
   posts: PostProps[];
   data: PostProps[];
@@ -49,16 +49,18 @@ const Posts: React.FC<PostsProps> = ({
   }
   if (view === 'cards') {
     return (
-      <div>
-        {filtered.map((post) => (
-          <Card key={post.id} {...post} />
-        ))}
+      <>
+        <div className={classes.component}>
+          {filtered.map((post) => (
+            <Card key={post.id} {...post} />
+          ))}
+        </div>
         {posts.length < data.length && !isSearching && (
-          <button type="button" onClick={handleMorePosts}>
+          <button type="button" onClick={handleMorePosts} className={classes.button}>
             Показать еще
           </button>
         )}
-      </div>
+      </>
     );
   }
   return null;

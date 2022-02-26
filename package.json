@@ -24,6 +24,7 @@
     "mobx-react-lite": "^3.2.3",
     "postcss": "^8.4.6",
     "postcss-scss": "^4.0.3",
+    "puppeteer": "^13.4.0",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",
     "react-dom": "^17.0.2",
@@ -71,6 +72,9 @@
     ]
   },
   "devDependencies": {
-    "@types/classnames": "^2.3.1"
+    "@types/classnames": "^2.3.1",
+    "@types/puppeteer": "^5.4.5",
+    "expect-puppeteer": "^6.1.0",
+    "jest-puppeteer": "^6.1.0"
   }
 }
