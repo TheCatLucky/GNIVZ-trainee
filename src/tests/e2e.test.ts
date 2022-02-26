@@ -16,10 +16,6 @@ describe('Е2Е Тесты', () => {
     });
   });
 
-  it('Есть тексты на стартовом экране', async () => {
-    const text = await page.evaluate(() => document.body.textContent);
-    expect(text).toContain('sunt aut facere');
-  });
   it('создается фото отображения списком', async () => {
     await page.click('#root > header > nav > a:nth-child(1)');
     await page.screenshot({ path: './src/tests/list.jpg' });
@@ -29,6 +25,10 @@ describe('Е2Е Тесты', () => {
     await page.click('#root div button');
     const text = await page.evaluate(() => document.body.textContent);
     expect(text).toContain('eum et est occaecati');
+  });
+  it('Есть тексты на стартовом экране', async () => {
+    const text = await page.evaluate(() => document.body.textContent);
+    expect(text).toContain('sunt aut facere');
   });
   it('создается фото отображения карточек', async () => {
     await page.click('#root > header > nav > a:nth-child(2)');

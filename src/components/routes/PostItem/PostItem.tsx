@@ -27,7 +27,6 @@ const PostItem: React.FC = () => {
         setError(err.message);
       });
   }, []);
-  console.log('s');
   return (
     <div className={classes.component}>
       {isLoading && <Loading />}
