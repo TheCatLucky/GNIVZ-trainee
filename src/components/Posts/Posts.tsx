@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { observer } from 'mobx-react-lite';
 
 import Post, { PostProps } from './PostLayout/Post';
 import Card from './CardLayout/Card';
 import classes from './Posts.module.scss';
+import searchStore from '../../stores/searchStore';
+
 type PostsProps = {
   posts: PostProps[];
   data: PostProps[];
@@ -12,7 +15,7 @@ type PostsProps = {
   view?: string;
 };
 
-const Posts: React.FC<PostsProps> = ({
+const Posts: React.FC<PostsProps> = observer(({
   posts,
   data,
   isSearching,
@@ -20,23 +23,14 @@ const Posts: React.FC<PostsProps> = ({
   view = 'list',
   handleMorePosts,
 }) => {
-  const [filtered, setFiltred] = useState<PostProps[]>([]);
-
+  const { filtredPosts } = searchStore;
   useEffect(() => {
-    if (search.length > 2) {
-      const filtredPosts = posts.filter((post) =>
-        post.title.toLowerCase().includes(search.toLowerCase()),
-      );
-      setFiltred(filtredPosts);
-    } else {
-      setFiltred(posts);
-    }
+    searchStore.setFilter(search);
   }, [search, posts]);
-
   if (view === 'list') {
     return (
       <div>
-        {filtered.map((post) => (
+        {filtredPosts.map((post) => (
           <Post key={post.id} {...post} />
         ))}
         {posts.length < data.length && !isSearching && (
@@ -51,12 +45,16 @@ const Posts: React.FC<PostsProps> = ({
     return (
       <>
         <div className={classes.component}>
-          {filtered.map((post) => (
+          {filtredPosts.map((post) => (
             <Card key={post.id} {...post} />
           ))}
         </div>
         {posts.length < data.length && !isSearching && (
-          <button type="button" onClick={handleMorePosts} className={classes.button}>
+          <button
+            type="button"
+            onClick={handleMorePosts}
+            className={classes.button}
+          >
             Показать еще
           </button>
         )}
@@ -64,6 +62,6 @@ const Posts: React.FC<PostsProps> = ({
     );
   }
   return null;
-};
+});
 
 export default Posts;
