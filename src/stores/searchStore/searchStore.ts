@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { makeAutoObservable } from 'mobx';
 
 import { PostProps } from '../../data/posts';
@@ -29,17 +30,20 @@ class SearchStore {
         .getSomeData()
         .then((data) => (this.data = data))
         .then(() => (this.posts = this.data.slice(0, 3)))
-        .then(() => (this.filtredPosts = this.posts));
+        .then(() => (this.filtredPosts = this.posts))
+        .catch((err: Error | AxiosError) => {
+          console.log(err.message);
+          this.setError(err.message);
+        });
     } finally {
       this.isLoading = false;
     }
   };
 
-  setFilter(searchQuery = ''): void {
-    this.search = searchQuery;
-    if (searchQuery.length > 2) {
+  setFilter(): void {
+    if (this.search.length > 2) {
       this.filtredPosts = this.posts.filter((post) =>
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()),
+        post.title.toLowerCase().includes(this.search.toLowerCase()),
       );
     } else {
       this.filtredPosts = this.posts;

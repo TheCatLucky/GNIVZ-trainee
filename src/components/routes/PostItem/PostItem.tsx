@@ -32,10 +32,14 @@ const PostItem: React.FC = () => {
       {isLoading && <Loading />}
       {error && <CustomError error={error} />}
       <Link to={'/post/list'}>Назад</Link>
-      <h3>{post?.title}</h3>
-      <p>{post?.body}</p>
-      <p>Номер поста: {post?.id}</p>
-      <p>Номер пользователя: {post?.userId}</p>
+      {!error && (
+        <>
+          <h3>{post?.title}</h3>
+          <p>{post?.body}</p>
+          <p>Номер поста: {post?.id}</p>
+          <p>Номер пользователя: {post?.userId}</p>
+        </>
+      )}
     </div>
   );
 };

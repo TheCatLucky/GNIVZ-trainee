@@ -26,7 +26,6 @@ const Home: React.FC = observer(() => {
   };
   useEffect(() => {
     searchStore.getData();
-    console.log('запрашиваю новые данные');
     //searchStore.setLoading(true);
     //axios
     //  .get('https://jsonplaceholder.typicode.com/posts?_limit=50')
