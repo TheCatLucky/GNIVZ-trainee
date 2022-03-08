@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { action, makeObservable, observable } from 'mobx';
 
 import { PostProps } from '../../data/posts';
 import service from './searchStore.service';
@@ -19,7 +19,20 @@ class SearchStore {
   isSearching = false;
 
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      error: observable,
+      search: observable,
+      filtredPosts: observable,
+      posts: observable,
+      isLoading: observable,
+      isSearching: observable,
+      getData: action.bound,
+      setFilter: action.bound,
+      setError: action.bound,
+      setSearch: action.bound,
+      setSearching: action.bound,
+      setPosts: action.bound,
+    });
   }
 
   getData = async () => {
@@ -28,7 +41,7 @@ class SearchStore {
       service
         .getSomeData()
         .then((data) => (this.data = data))
-        .then(() => (this.posts = this.data.slice(0, 3)))
+        .then(() => this.setPosts())
         .then(() => (this.filtredPosts = this.posts));
     } finally {
       this.isLoading = false;

@@ -11,8 +11,13 @@ Object {
         <h3>
           Загловок
         </h3>
-        <button>
-          Подробнее
+        <button
+          class="ant-btn ant-btn-default ant-btn-sm"
+          type="button"
+        >
+          <span>
+            Подробнее
+          </span>
         </button>
       </div>
     </div>
@@ -24,8 +29,13 @@ Object {
       <h3>
         Загловок
       </h3>
-      <button>
-        Подробнее
+      <button
+        class="ant-btn ant-btn-default ant-btn-sm"
+        type="button"
+      >
+        <span>
+          Подробнее
+        </span>
       </button>
     </div>
   </div>,

@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import React, { useState } from 'react';
 
 import classes from './Card.module.scss';
@@ -16,9 +17,9 @@ const Card: React.FC<CardProps> = ({ title, body }) => {
     <div className={classes.component}>
       <h3>{title}</h3>
       {fullView && <div className={classes.body}>{body}</div>}
-      <button onClick={handleView}>
+      <Button size="small" onClick={handleView}>
         {fullView ? 'Свернуть' : 'Подробнее'}
-      </button>
+      </Button>
     </div>
   );
 };

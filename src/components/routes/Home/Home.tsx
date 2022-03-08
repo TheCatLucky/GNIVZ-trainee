@@ -11,12 +11,6 @@ import classes from './Home.module.scss';
 
 const Home: React.FC = observer(() => {
   const { error, search, data, posts, isLoading, isSearching } = searchStore;
-  //const [data, setData] = useState<PostProps[]>([]);
-  //const [posts, setPosts] = useState<PostProps[]>([]);
-  //const [isSearching, setSearching] = useState(false);
-  //const [isLoading, setLoading] = useState(false);
-  //const [error, setError] = useState('');
-  //const [search, setSearch] = useState('');
   const { view } = useParams();
   const handleSearch: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     searchStore.setSearch(e.target.value);
@@ -26,21 +20,6 @@ const Home: React.FC = observer(() => {
   };
   useEffect(() => {
     searchStore.getData();
-    console.log('запрашиваю новые данные');
-    //searchStore.setLoading(true);
-    //axios
-    //  .get('https://jsonplaceholder.typicode.com/posts?_limit=50')
-    //  .then((response) => {
-    //    //throw new Error('Ошибка');
-    //    searchStore.setData(response.data);
-    //    searchStore.setPosts(response.data.slice(0, 3));
-    //    searchStore.setLoading(false);
-    //  })
-    //  .catch((err: Error | AxiosError) => {
-    //    console.log(err.message);
-    //    searchStore.setLoading(false);
-    //    searchStore.setError(err.message);
-    //  });
   }, []);
   useEffect(() => {
     if (search) {
