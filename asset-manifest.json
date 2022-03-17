@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/GNIVZ-trainee/static/css/main.48294c83.chunk.css",
+    "main.js": "/GNIVZ-trainee/static/js/main.91e71ce6.chunk.js",
+    "main.js.map": "/GNIVZ-trainee/static/js/main.91e71ce6.chunk.js.map",
+    "runtime-main.js": "/GNIVZ-trainee/static/js/runtime-main.3a4a7911.js",
+    "runtime-main.js.map": "/GNIVZ-trainee/static/js/runtime-main.3a4a7911.js.map",
+    "static/js/2.24a55622.chunk.js": "/GNIVZ-trainee/static/js/2.24a55622.chunk.js",
+    "static/js/2.24a55622.chunk.js.map": "/GNIVZ-trainee/static/js/2.24a55622.chunk.js.map",
+    "index.html": "/GNIVZ-trainee/index.html",
+    "static/css/main.48294c83.chunk.css.map": "/GNIVZ-trainee/static/css/main.48294c83.chunk.css.map",
+    "static/js/2.24a55622.chunk.js.LICENSE.txt": "/GNIVZ-trainee/static/js/2.24a55622.chunk.js.LICENSE.txt",
+    "static/media/Loader.28d2a61c.svg": "/GNIVZ-trainee/static/media/Loader.28d2a61c.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3a4a7911.js",
+    "static/js/2.24a55622.chunk.js",
+    "static/css/main.48294c83.chunk.css",
+    "static/js/main.91e71ce6.chunk.js"
+  ]
+}
