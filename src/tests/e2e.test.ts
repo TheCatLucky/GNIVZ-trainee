@@ -11,18 +11,19 @@ describe('Е2Е Тесты', () => {
   beforeAll(async () => {
     browser = await puppeteer.launch();
     page = await browser.newPage();
-    await page.goto('http://localhost:3000/post/list', {
-      waitUntil: ['domcontentloaded'],
+    await page.goto('https://thecatlucky.github.io/GNIVZ-trainee/', {
+      waitUntil: ['networkidle0'],
     });
   });
 
+  // eslint-disable-next-line jest/expect-expect
   it('создается фото отображения списком', async () => {
     await page.click('#root > header > nav > a:nth-child(1)');
     await page.screenshot({ path: './src/tests/list.jpg' });
   }, 5000);
 
   it('появляяются новые элементы', async () => {
-    await page.click('#root div button');
+    await page.click('div.Home_content__5uVFV > div > button  ');
     const text = await page.evaluate(() => document.body.textContent);
     expect(text).toContain('eum et est occaecati');
   });
